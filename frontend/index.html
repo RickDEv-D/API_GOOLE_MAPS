@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bet Platform Console</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1>Bet Console</h1>
+        <p>Integração Front + Back</p>
+        <nav>
+          <a href="#overview">Visão Geral</a>
+          <a href="#onboarding">Onboarding/KYC</a>
+          <a href="#operations">Operações</a>
+          <a href="#games">Jogos populares</a>
+          <a href="#ledger">Ledger</a>
+          <a href="#compliance">Compliance</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section id="overview" class="hero card">
+          <div>
+            <h2>Plataforma Integrada (MVP)</h2>
+            <p>
+              Interface para usuário interagir com operações e jogos famosos
+              (simulados) usando wallet + ledger e regras de KYC.
+            </p>
+          </div>
+          <div class="hero-tags">
+            <span>KYC</span>
+            <span>PIX</span>
+            <span>Wallet</span>
+            <span>Ledger</span>
+            <span>Slots</span>
+            <span>Crash</span>
+          </div>
+        </section>
+
+        <section class="stats-grid">
+          <article class="card stat">
+            <h3>Usuário</h3>
+            <p id="userId">-</p>
+          </article>
+          <article class="card stat">
+            <h3>Status KYC</h3>
+            <p id="kycStatus">-</p>
+          </article>
+          <article class="card stat">
+            <h3>Saldo Cash</h3>
+            <p id="cashBalance">R$ 0,00</p>
+          </article>
+          <article class="card stat">
+            <h3>Último Evento</h3>
+            <p id="lastEvent">-</p>
+          </article>
+        </section>
+
+        <section id="onboarding" class="card">
+          <h2>Onboarding e KYC</h2>
+          <div class="form-grid">
+            <label>Email
+              <input id="email" type="email" placeholder="jogador@email.com" />
+            </label>
+            <label>CPF
+              <input id="cpf" type="text" placeholder="00000000000" />
+            </label>
+            <div class="actions-row">
+              <button id="registerBtn">Cadastrar</button>
+              <button id="approveKycBtn" class="secondary">Aprovar KYC</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="operations" class="card">
+          <h2>Operações Financeiras e Jogo</h2>
+          <div class="form-grid ops">
+            <label>Valor da operação (BRL)
+              <input id="amount" type="number" min="1" value="50" />
+            </label>
+            <div class="actions-row">
+              <button id="depositBtn">Depósito PIX</button>
+              <button id="betBtn">Registrar Bet</button>
+              <button id="winBtn">Registrar Win</button>
+              <button id="withdrawBtn" class="danger">Saque PIX</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="games" class="card">
+          <div class="card-header">
+            <h2>Lobby — Jogos mais famosos</h2>
+            <p class="muted">Aviator, Mines, Roleta, Slots e Live Casino (simulado)</p>
+          </div>
+          <div id="gamesGrid" class="games-grid"></div>
+        </section>
+
+        <section id="ledger" class="two-col">
+          <article class="card">
+            <div class="card-header">
+              <h2>Wallet</h2>
+              <button id="refreshBtn" class="secondary">Atualizar</button>
+            </div>
+            <pre id="balance">{}</pre>
+          </article>
+
+          <article class="card">
+            <h2>Fluxo Integrado</h2>
+            <ol class="flow">
+              <li>Cadastro do usuário</li>
+              <li>KYC aprovado</li>
+              <li>Depósito confirmado</li>
+              <li>Usuário interage com jogos do lobby</li>
+              <li>Bet debitada e win creditada em ledger</li>
+              <li>Saque com regra KYC</li>
+            </ol>
+          </article>
+        </section>
+
+        <section class="card">
+          <h2>Extrato Ledger (últimas transações)</h2>
+          <pre id="statement">[]</pre>
+        </section>
+
+        <section id="compliance" class="two-col">
+          <article class="card">
+            <h2>Checklist rápido de Compliance</h2>
+            <ul class="checklist">
+              <li>Validação de idade/CPF e status KYC</li>
+              <li>Idempotency-Key em operações críticas</li>
+              <li>Ledger double-entry balanceado</li>
+              <li>Bloqueio de saque sem KYC aprovado</li>
+            </ul>
+            <a class="doc-link" href="/PRD_PLATAFORMA_APOSTAS_BR.md" target="_blank" rel="noreferrer">Abrir PRD completo</a>
+          </article>
+
+          <article class="card">
+            <h2>Log operacional</h2>
+            <pre id="log"></pre>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
