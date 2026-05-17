@@ -3,51 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bet Platform Demo — Front + Back</title>
+    <title>Gerador de Etiquetas com QR anti-fraude</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header>
-      <h1>Bet Platform Demo (Front-end + Back-end)</h1>
-      <p>Demonstração com wallet/ledger, depósito, aposta, ganho e saque.</p>
+      <h1>Etiquetas em Massa com QRCode Único</h1>
+      <p>Template editável em tempo real + verificação de autenticidade.</p>
     </header>
 
     <main class="grid">
       <section class="card">
-        <h2>1) Cadastro</h2>
-        <label>Email <input id="email" type="email" placeholder="jogador@email.com" /></label>
-        <label>CPF <input id="cpf" type="text" placeholder="00000000000" /></label>
-        <button id="registerBtn">Cadastrar</button>
-        <button id="approveKycBtn">Aprovar KYC</button>
-        <p><strong>User ID:</strong> <span id="userId">-</span></p>
-        <p><strong>KYC:</strong> <span id="kycStatus">-</span></p>
+        <h2>1) Dados base</h2>
+        <label>Produto <input id="product" value="Cápsula Premium" /></label>
+        <label>Lote <input id="batch" value="L2026-0001" /></label>
+        <label>Fabricação <input id="manufactureDate" type="date" /></label>
+        <label>Validade <input id="expiryDate" type="date" /></label>
+        <label>Quantidade <input id="quantity" type="number" min="1" max="5000" value="50" /></label>
+        <label>Nome do template <input id="templateName" value="template_padrao" /></label>
+        <label>Imagem base <input id="baseImage" type="file" accept="image/*" /></label>
+        <button id="generateBtn">Gerar etiquetas</button>
       </section>
 
       <section class="card">
-        <h2>2) Operações financeiras</h2>
-        <label>Valor <input id="amount" type="number" min="1" value="50" /></label>
-        <div class="actions">
-          <button id="depositBtn">Depositar PIX</button>
-          <button id="betBtn">Apostar</button>
-          <button id="winBtn">Registrar ganho</button>
-          <button id="withdrawBtn">Sacar PIX</button>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>3) Wallet</h2>
-        <button id="refreshBtn">Atualizar wallet</button>
-        <pre id="balance">{}</pre>
+        <h2>2) Prévia em tempo real</h2>
+        <canvas id="preview" width="500" height="300"></canvas>
       </section>
 
       <section class="card full">
-        <h2>4) Extrato Ledger</h2>
-        <pre id="statement">[]</pre>
-      </section>
-
-      <section class="card full">
-        <h2>Log</h2>
-        <pre id="log"></pre>
+        <h2>3) Resultado</h2>
+        <button id="downloadJsonBtn" disabled>Baixar lote JSON</button>
+        <button id="verifyBtn" disabled>Validar 1ª etiqueta</button>
+        <button id="exportPdfBtn" disabled>Exportar PDF para impressão</button>
+        <pre id="output"></pre>
       </section>
     </main>
 
